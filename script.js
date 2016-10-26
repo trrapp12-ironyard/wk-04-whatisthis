@@ -68,6 +68,8 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 
 - because ...the .appends it to the window object
 
+Correct answer: because implicitly bound to 'window' through the call site
+
 */
 
 
@@ -79,6 +81,8 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 - "this" is ...an object
 
 - because ...if you have a function(ie test1), what preceeds it with the . will be an object.
+
+correct answer: because implicity bound to inAnObject.
 
 */
 // var c = ['a', 'b', 'c', 'd']
@@ -102,6 +106,8 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 - "this" is ...not a function
 
 - because ... .test1 is a property of the object "inAnObject" and "anotherObject" is a property of "inAnObject."  They are both on the same level.  There is not however any .test1 that is a property of "anotherObject"
+
+Correct answer: it simply does not exist
 */
 
 
@@ -114,6 +120,7 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 
 - because ...the computer looks and finds inAnObject, then it finds anotherObject, then it finds the property test2, whose value references an anonymous function.  The function then console.logs the parameters.
 
+
 */
 
 // * Problem 6
@@ -123,10 +130,12 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 
 - because ...the .call is a property of the whatIsThis variable.  The variable is set to an anonymous function. .function is a property of the window object.  So when we pass in nothing into the .call, and it comes back as undefined it will search up the chain to see if it can find it, which is why it is showing window.
 
+correct answer: 'this' is Window or global without an 'a' or 'b' defined.
+
+because it isn't otherwise specified, therefore uses the default binding, in this case Window; since no 'a' or 'b' parameter, they're undefined.
+
+
 */
-
-
-
 
 // * Problem 7
 // whatIsThis.call(trickyTricky);
@@ -135,6 +144,7 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 
 - because ...trickyTricky is a variable that is set to an object.  When you pass it in it returns the object and the corresponding properties.
 
+.call gives the whatIsThis access to the execution environment of the parameter that is passed.  It supercedes the execution environment of what it appends to, but if it can't find what it is looking for it will go back to the default execution environment.
 */
 
 
@@ -147,9 +157,8 @@ The JavaScript Window Object is the highest level JavaScript object which corres
 
 - because ...trickyTricky is still an object, so it shows as an object.  the other two are passed in as parameters and so show up as "a" and "b".  Now not sure why trickyTricky isn't a parameter.  .call seems to have a characeristic where the first parameter refers to the this, so since trickyTricky was first it didn't get passed in
 
+the first parameter will give you the new object that you want to append and give the execution environment of.  All proceeding parameters will be arguments of the first parameter passed.  Therefore 'nice' and 'job' are actually parameters being passed into trickyTricky.
 */
-
-
 
 
 // * Problem 9
@@ -211,6 +220,7 @@ The apply() method calls a function with a given THIS value and arguments provid
 
 SO....since the 'nice' and the 'job' were not in an array it threw an error because it wasn't passing an array as an argument
 
+apply requires an array if you're passing multiple parameters, but call doesn't
 */
 
 
@@ -247,18 +257,28 @@ SO....since the 'nice' and the 'job' were not in an array it threw an error beca
 
 - because ...inAFunction takes the parameters 'what will' and 'happen?' and when it calls the whatIsThis function it passes them in.  This is not defined in that function, so it looks for a level higher and finds the window object.
 
-*/
+
+real answer: because it was default bound to 'window'
+through it's call site. 'new' doesn't apply because the function is simply called from within the new function*/
 
 
 
 
 // * Problem 17
 // var newObject = new inAFunction('what will', 'happen?');
+// newObject.test4('now', 'what');
 // newObject.test3('C', 'D');
 /*
 - "this" is ...two things.
 
 - because ...It is in the inAFunction because inAFunction is being initialized with the new constructor.  The .test3 again calls the original whatIsThis function, and that is where it finds the window object
+
+- "this" is initially Window or global, then it's 'inAFunction'
+
+- because it
+-- line 212 - initially did a new bind
+-- the call to whatIsThis on line 23 reset the bind to the default 'window'
+-- the test4 call retained the newObject context, as did test3
 
 */
 
