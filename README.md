@@ -17,14 +17,6 @@ This was an exercise where we had to determine what the keyword ["this"](https:/
 - [x]  Prototype chains
 <br/>
 <br/>
-
-
-###Project published at: 
----
-
-[wk-01-alpha](https://trrapp12-ironyard.github.io/wk-01-alpha/)
-<br/>
-<br/>
 ###More Information:
 ---
 
