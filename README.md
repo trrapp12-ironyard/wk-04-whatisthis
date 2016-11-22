@@ -17,6 +17,7 @@ This was an exercise where we had to determine what the keyword ["this"](https:/
 - [x]  Prototype chains
 <br/>
 <br/>
+
 ###More Information:
 ---
 
