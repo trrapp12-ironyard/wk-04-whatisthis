@@ -3,7 +3,7 @@
 
 ### Brief Description:
 ---
-This was an exercise where we had to determine what the keyword ["this"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) stands for in different situations.
+This was an exercise where we had to determine what the keyword ["this"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) stands for in different situations.  The code base was provided.  Our involvement was to show at different points in the code base what "this" stood for.
 
 
 ### This project demonstrates the following:
